@@ -15,14 +15,16 @@
 	<script>
 		
 		window.dataLayer = window.dataLayer || [];
+		console.log(window.dataLayer + " window datalayer");
 		
 		function gtag() {
 			dataLayer.push(arguments);
 		}
 		
 		gtag('js', new Date());
-		
+		console.log(window.dataLayer + " after push arguments");
 		gtag('config', 'G-6QCVCBJKR0');
+		console.log(window.dataLayer + " after push config");
 	</script>
 
 </head>
