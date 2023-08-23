@@ -17,6 +17,9 @@
 		console.log(window.dataLayer + " after push arguments");
 		gtag('config', 'G-6QCVCBJKR0');
 		console.log(window.dataLayer + " after push config");
+		gtag('config', 'G-6QCVCBJKR0', {
+			'user_id': '123_123'
+		});
 	</script>
 	
 	<meta charset='UTF-8'>
@@ -48,6 +51,7 @@
 <!-- Mã JavaScript để theo dõi sự kiện Submit -->
 <script>
 	document.getElementById('submitButton').addEventListener('click', function () {
+		
 		// Gửi sự kiện theo dõi đến Google Analytics
 		// gtag('event', 'conversion', {
 		// 	'event_category': 'Form Submission',
