@@ -60,17 +60,24 @@
 	});
 </script>
 
-
-
+<br>
 <!-- Nút "About" trong thẻ HTML -->
-<button id="aboutButton">About</button>
+<button id='aboutButton'>About</button>
+
+<br>
+<button id='googleButton'>Google</button>
 
 <script>
-
 	
-	// Khi nút "About" trong thẻ HTML được nhấn
-	document.getElementById('aboutButton').addEventListener('click', function() {
+	document.getElementById('aboutButton').addEventListener('click', function () {
 		window.location.href = 'about.html'; // Chuyển hướng đến trang "about.html"
+	});
+</script>
+
+<script>
+	
+	document.getElementById('googleButton').addEventListener('click', function () {
+		window.location.href = 'https://www.google.com/'; // Chuyển hướng đến trang "about.html"
 	});
 </script>
 
