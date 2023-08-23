@@ -28,8 +28,33 @@
 
 </head>
 <body>
+
 <button type='button'>Click Button</button>
 <p>Test</p>
+
+<!-- Biểu mẫu đăng ký -->
+<form id='registrationForm'>
+	<input	name='name'
+			placeholder='Name'
+			type='text'>
+	<input	name='email'
+			placeholder='Email'
+			type='email'>
+	<button	id='submitButton'
+			type='submit'>Submit
+	</button>
+</form>
+
+<!-- Mã JavaScript để theo dõi sự kiện Submit -->
+<script>
+	document.getElementById('submitButton').addEventListener('click', function () {
+		// Gửi sự kiện theo dõi đến Google Analytics
+		gtag('event', 'conversion', {
+			'event_category': 'Form Submission',
+			'event_label'	: 'Registration Form'
+		});
+	});
+</script>
 
 </body>
 </html>
