@@ -18,26 +18,12 @@
 		gtag('config', 'G-6QCVCBJKR0');
 		console.log(window.dataLayer + " after push config");
 		gtag('config', 'G-6QCVCBJKR0', {
-			'debug_mode': true
+			'debug_mode'	: true,
+			'page_title22'	: 'Travel Destinations',
+			'currency'		: 'USD',
+			'user_id'		: 'USER_ID_123'
 		});
 	</script>
-	
-	<!-- Google Tag Manager -->
-	<script>(function (w, d, s, l, i) {
-		w[l] = w[l] || [];
-		w[l].push({
-						'gtm.start'							:
-								new Date().getTime(), event	: 'gtm.js'
-					});
-		var	f							= d.getElementsByTagName(s)[0],
-		 
-			j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-		j.async							= true;
-		j.src							=
-				'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-		f.parentNode.insertBefore(j, f);
-	})(window, document, 'script', 'dataLayer', 'GTM-WM6732TW');</script>
-	<!-- End Google Tag Manager -->
 	
 	<meta charset='UTF-8'>
 	<meta	content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'
@@ -48,16 +34,19 @@
 
 </head>
 <body>
+<p>Welcome to my website!</p>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-	<iframe	height='0'
-			src='https://www.googletagmanager.com/ns.html?id=GTM-WM6732TW'
-			style='display:none;visibility:hidden'
-			width='0'></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
-
+<script>
+	/**
+	 * The following event is sent when the page loads. You could
+	 * wrap the event in a JavaScript function so the event is
+	 * sent when the user performs some action.
+	 */
+	gtag('event', 'screen_view', {
+		'app_name'		: 'myAppName',
+		'screen_name'	: 'Home'
+	});
+</script>
 <button type='button'>Click Button</button>
 <p>Test</p>
 
@@ -70,7 +59,7 @@
 			placeholder='Email'
 			type='email'>
 	<button	id='submitButton'
-			type='submit'>Submit
+			type='submit'>Submit2
 	</button>
 </form>
 
@@ -78,11 +67,10 @@
 <script>
 	document.getElementById('submitButton').addEventListener('click', function () {
 		
-		// Gửi sự kiện theo dõi đến Google Analytics
-		// gtag('event', 'conversion', {
-		// 	'event_category': 'Form Submission',
-		// 	'event_label'	: 'Registration Form'
-		// });
+		gtag('event', 'submit form event', {
+			'event_category': 'Form Submission',
+			'event_label'	: 'Registration Form'
+		});
 	});
 </script>
 
@@ -128,5 +116,114 @@
 	});
 </script>
 
+<!--********** ECOMMERCE **********-->
+
+<br>
+<div>This is where the purchase form would go</div>
+<button>Submit</button>
+<script>
+	gtag("event", "purchase", {
+		transaction_id	: "T_12345_2",
+		value			: 25.42,
+		tax				: 4.90,
+		shipping		: 5.99,
+		currency		: "VND",
+		coupon			: "SUMMER_SALE",
+		items			: [
+			// If someone purchases more than one item,
+			// you can add those items to the items array
+			{
+				item_id			: "SKU_12345",
+				item_name		: "Stan and Friends Tee",
+				affiliation		: "Google Merchandise Store",
+				coupon			: "SUMMER_FUN",
+				discount		: 2.22,
+				index			: 0,
+				item_brand		: "Google",
+				item_category	: "Apparel",
+				item_category2	: "Adult",
+				item_category3	: "Shirts",
+				item_category4	: "Crew",
+				item_category5	: "Short sleeve",
+				item_list_id	: "related_products",
+				item_list_name	: "Related Products",
+				item_variant	: "green",
+				location_id		: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+				price			: 9.99,
+				quantity		: 1
+			}]
+	});
+</script>
+
+<button id='purchase'>Purchase</button>
+<script>
+	document.getElementById("purchase").addEventListener("click", function () {
+		gtag("event", "purchase", {
+			// This purchase event uses a different transaction ID
+			// from the previous purchase event so Analytics
+			// doesn't deduplicate the events.
+			// Learn more: https://support.google.com/analytics/answer/12313109
+			transaction_id	: "T_12345_5",
+			value			: 25.42,
+			tax				: 4.90,
+			shipping		: 5.99,
+			currency		: "USD",
+			coupon			: "SUMMER_SALE",
+			items			: [
+				{
+					item_id			: "SKU_12345",
+					item_name		: "Stan and Friends Tee",
+					affiliation		: "Google Merchandise Store",
+					coupon			: "SUMMER_FUN",
+					discount		: 2.22,
+					index			: 0,
+					item_brand		: "Google",
+					item_category	: "Apparel",
+					item_category2	: "Adult",
+					item_category3	: "Shirts",
+					item_category4	: "Crew",
+					item_category5	: "Short sleeve",
+					item_list_id	: "related_products",
+					item_list_name	: "Related Products",
+					item_variant	: "green",
+					location_id		: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+					price			: 9.99,
+					quantity		: 1
+				}]
+		});
+	});
+</script>
+
+<br>
+
+<br>
+
+<!--********** Exception Event **********-->
+
+<script>
+	
+	function divide(x, y) {
+		if (y === 0) {
+			throw "Division by zero";
+		}
+		return x / y;
+	}
+	
+	try {
+		var r = divide(1, 0);
+	}
+	catch (err) {
+		gtag('event', 'exception', {
+			'description'		: err,
+			'fatal'				: true,
+			'custom_description': 'custom_description'
+		});
+	}
+</script>
+
 </body>
 </html>
+
+
+
+
