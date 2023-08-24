@@ -18,8 +18,7 @@
 		gtag('config', 'G-6QCVCBJKR0');
 		console.log(window.dataLayer + " after push config");
 		gtag('config', 'G-6QCVCBJKR0', {
-			'user_id'	: '123_123',
-			'debug_mode': true
+			// 'debug_mode': true
 		});
 	</script>
 	
@@ -105,6 +104,27 @@
 	
 	document.getElementById('googleButton').addEventListener('click', function () {
 		window.location.href = 'https://www.google.com/'; // Chuyển hướng đến trang "about.html"
+	});
+</script>
+<br>
+<video	controls
+		height='360'
+		width='640'>
+	<source	src='video.mp4'
+			type='video/mp4'>
+	Your browser does not support the video tag.
+</video>
+
+<script>
+	var videoElement = document.querySelector('video');
+	videoElement.addEventListener('play', function () {
+		// Gọi hàm gtag() để gửi sự kiện 'Video Play'
+		gtag('event', 'PlayVideo', {
+			'event_category': 'VideoCategory',
+			'event_action'	: 'Play',
+			'event_label'	: 'Your Video Name',
+			"custom_name"	: 'custom_event_name'
+		});
 	});
 </script>
 
